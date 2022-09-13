@@ -13,7 +13,7 @@
         <script src="https://kit.fontawesome.com/1aafe838d6.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg">
+        <nav class="navbar fixed-top navbar-dark navbar-expand-lg">
             <h4 class="navbar-brand">Auctions<i class="fas fa-solid fa-cart-shopping"></i></h4>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbartoggle" aria-controls="navbartoggle" aria-expanded="false" aria-label="toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,6 +23,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'createlisting' %}">Create New Listing</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <ul class="navbar-nav justify-content-end">
                     {% if user.is_authenticated %}

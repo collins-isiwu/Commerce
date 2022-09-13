@@ -1,7 +1,31 @@
 {% extends "auctions/layout.html" %}
+{% load humanize %}
+
+{% block title %}
+    Active Listings
+{% endblock%}
 
 {% block body %}
-    <h2 class="my-3">Active Listings</h2>
+    <h2 class="text-center title Yo">Active Listings</h2>
+    <div class="container d-flex flex-wrap justify-content-center">
 
-    TODO
+        {% for listing in listings %}
+            <div class="card m-2 border-bottom" style="width: 20em;">
+                <a href="{% url 'listing' listing.id %}" class="text-decoration-none text-dark"></a>
+                    <img class="card-img-top" src="{% if listing.image %}{{ listing.image }}{% else %}http://www.aaru.edu.jo/websites/aaru2/wp-content/plugins/learnpress/assets/images/no-image.png?Mobile=1&Source=%2F%5Flayouts%2Fmobile%2Fdispform%2Easpx%3FList%3D78b536db%252De7c7%252D45d9%252Da661%252Ddb2a2aa2fbaf%26View%3D6efc759a%252D0646%252D433c%252Dab6e%252D2f027ffe0799%26RootFolder%3D%252Fwebsites%252Faaru2%252Fwp%252Dcontent%252Fplugins%252Flearnpress%252Fassets%252Fimages%26ID%3D4786%26CurrentPage%3D1{% endif %}" alt="Photo of {{ listing.title }}">
+                    <div class="card-body border-top">
+                        <h5 class="card-title text-truncate">{{ listing }}</h5>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-text p-2"><strong>${{ listing.highest_bid | intcomma }}</strong></h5>
+                            <span class="p-2">{{ listing.no_of_bid }} bid(s)</span>
+                        </div>
+                        <p class="card-text text-truncate"><small>{{ listing.description }}</small></p>
+                    </div>
+                </a>
+        </div>
+    {% empty %}
+        No active listings
+    {% endfor %}
+    
+</div>
 {% endblock %}
