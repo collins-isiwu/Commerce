@@ -29,22 +29,27 @@ class Listing(models.Model):
     watched_by = models.ManyToManyField(User, blank=True, related_name="watchlist")
 
     def __str__(self):
-        return f'{self.title}' and f'{self.startingBid}'
+        return f"{self.title} and {self.startingBid}"
 
     def no_of_bid(self):
         """ Returns total number of bids submitted for a listing"""
         return self.bids.all().count()
 
+    # shows the current price which is the highest bid at the moment
     def highest_bid(self):
         """ solves the highest bid or if no bids, returns the starting price """
-        if self.no_of_bid > 0:
-            return round(self.bids.aggregate(Max('amount'))['amount_max'],2)
+        if self.no_of_bid() > 0:
+            return round(self.bids.aggregate(Max('amount'))['amount__max'],2)
         else:
-            return None
+            return self.startingBid
+
+    def is_in_watchlist(self, user):
+        # Tells us if the user added a listing to watchlist
+        return user.watchlist.filter(pk=self.pk).exists()
 
     def current_winner(self):
         """ resolves the user with the winning bid for the listing"""
-        if self.no_of_bid > 0:
+        if self.no_of_bid() > 0:
             return self.bids.get(amount=self.highest_bid()).user
         else:
             return None
@@ -55,7 +60,7 @@ class Listing(models.Model):
 
 class Bids(models.Model):
     item = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name="bids")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bids")
     amount = models.FloatField()
 
     def __str__(self):

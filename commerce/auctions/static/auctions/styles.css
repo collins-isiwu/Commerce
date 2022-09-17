@@ -9,3 +9,9 @@ nav {
 .btn {
     background-color: #580000;
 }
+
+.loginform {
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+}
