@@ -1,5 +1,5 @@
 # cs50w-Commerce
-Design an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
+Designed an eBay-like e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a “watchlist.”
 
 ## YouTube Video Demonstration
 [Commerce - 4 minutes](https://youtu.be/q-Ui8uWIuk8)
