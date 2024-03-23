@@ -3,9 +3,11 @@
 import os
 import sys
 
+# Manage.py for Production in PythonAnywhere
+
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'commerce.settings_dev')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'commerce.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
