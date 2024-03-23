@@ -26,11 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '6ps8j!crjgrxt34cqbqn7x&b3y%(fny8k8nh21+qa)%ws3fh!q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['f3ture.pythonanywhere.com']
 
-# ALLOWED_HOSTS = ['f3ture.pythonanywhere.com']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# Development Environment
+# DEBUG = True
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
