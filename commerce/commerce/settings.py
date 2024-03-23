@@ -26,9 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '6ps8j!crjgrxt34cqbqn7x&b3y%(fny8k8nh21+qa)%ws3fh!q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['f3ture.pythonanywhere.com']
+# ALLOWED_HOSTS = ['f3ture.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -124,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'auctions/static/auctions']
+STATICFILES_DIRS = [BASE_DIR / 'auctions/static']
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
