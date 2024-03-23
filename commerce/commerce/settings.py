@@ -134,7 +134,6 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DEBUG = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
